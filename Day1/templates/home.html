@@ -1,0 +1,15 @@
+<h1>Home Page</h1>
+
+{{name}}
+
+<p>Id = {{x}}</p>
+
+
+<a href="/?id=134&name=hritik">Home id=134, name=hritk</a><br>
+<a href="/login/134/hritik">Login with id =123, name =hritk</a>
+
+<br>
+<br>
+
+<a href="{{url_for('home', id=123, name='hritk')}}">Home id=134, name=hritk</a><br>
+<a href="{{url_for('login', id=134, name='hritk')}}">Login with id =123, name =hritk</a>
