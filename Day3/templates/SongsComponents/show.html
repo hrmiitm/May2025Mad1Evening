@@ -1,0 +1,22 @@
+
+
+{% for song in songs %}
+
+    <hr>
+
+    Name: {{song.name}} <br>
+    Duration: {{song.duration}} <br>
+    Date: {{song.date}} <br>
+    Lyrics: {{song.lyrics}} <br>
+
+    <a href="{{url_for('songs', song_id=song.id)}}">
+        <button>Play</button>
+    </a>
+    <a href="{{url_for('update_song', song_id=song.id)}}">
+        <button>Update</button>
+    </a>
+    <a href="{{url_for('delete_song', song_id=song.id)}}">
+        <button>Delete</button>
+    </a>
+    
+{% endfor %}

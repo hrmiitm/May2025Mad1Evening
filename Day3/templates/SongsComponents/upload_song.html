@@ -1,0 +1,13 @@
+<form action="{{url_for('upload_song')}}" method="POST" enctype="multipart/form-data">
+    
+    Name: <input type="text" name="name" required> <br>
+    Lyrics: <input type="text" name="lyrics"> <br>
+    Duration: <input type="text" name="duration"> <br>
+    Date: <input type="text" name="date"> <br>
+    
+    <div class="mb-3">
+    <label for="formFile" class="form-label">Choose Song File</label>
+    <input class="form-control" type="file" id="formFile" name="songfile" required>
+    </div>
+    <button type="submit">Upload Song</button>
+</form>
