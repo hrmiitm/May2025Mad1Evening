@@ -1,0 +1,16 @@
+Email: {{curr_user.email}}
+
+<br>
+<hr>
+{{creator_stats}}
+<hr>
+
+{% if curr_user.isCreator %}
+    {% for k,v in creator_stats.items() %}
+        {{k}} = {{v}} <br>
+    {% endfor %}
+{% endif %}
+
+{% if not curr_user.isCreator %}
+    <a href="/becomeCreator">Become a Creator</a>
+{% endif %}

@@ -1,0 +1,9 @@
+<form action="{{url_for('update_song_details', song_id=song.id)}}" method="POST">
+    
+    Name: <input type="text" name="name" value="{{song.name}}"> <br>
+    Lyrics: <input type="text" name="lyrics" value="{{song.lyrics}}"> <br>
+    Duration: <input type="text" name="duration" value="{{song.duration}}"> <br>
+    Date: <input type="text" name="date" value="{{song.date}}"> <br>
+    
+    <button type="submit">Upload Song</button>
+</form>

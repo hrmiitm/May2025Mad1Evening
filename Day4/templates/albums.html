@@ -1,0 +1,35 @@
+{% extends './layouts/bootstrap.html' %}
+
+{% block title %}
+    <title>My Albums</title>
+{% endblock %}
+
+{% block body %}
+  <div> {% include './BasicComponents/navbar.html' %} </div>
+  {% include './BasicComponents/flash.html'   %}
+
+
+  <!-- <div class="container"> -->
+  <div style="margin: 10px">
+    <div class="row">
+        
+        <div class="col-2" >
+            <h4>UploadAlbums</h4>
+            <div style="border: 1px black solid; height: 80dvh; padding: 10px; overflow-y: auto">
+              {% include './AlbumsComponents/upload_album.html'   %}
+            </div>
+            
+        </div>
+
+        <div class="col-10">
+            <h4>My Albums</h4>
+            <div style="border: 1px black solid; height: 80dvh; padding: 10px; overflow-y: auto">
+                {% include './AlbumsComponents/show_all_albums.html'   %}
+            </div>
+        </div>
+
+
+    </div>
+  </div>
+
+{% endblock %}

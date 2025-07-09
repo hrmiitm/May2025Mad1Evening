@@ -1,0 +1,57 @@
+
+<!-- <div>
+{% for album in albums %}
+    <h1>{{ album.name }}</h1>
+    <a href="/delete_album/{{album.id}}">
+        <button>Delete</button>
+    </a>
+    <hr>
+    {% for song in album.songs %}
+        <h4>{{ song.name }}</h4>
+    {% endfor %}
+{% endfor %}
+</div>
+
+<br>
+<br> -->
+
+
+
+{% for album in albums %}
+<div>  
+    <h3 style="display: inline-block;">{{ album.name }}</h3>
+    <button class="btn btn-sm btn-warning" style="display: inline-block; margin-left: 10px;">Update</button>
+
+    <a href="{{url_for('delete_album', id=album.id)}}">
+        <button class="btn btn-sm btn-warning" style="display: inline-block; margin-left: 10px;">Delete</button>
+    </a>
+    
+    <hr>
+    <div class="card-container" style="display: flex; flex-wrap: wrap;">  
+
+
+        {% for song in album.songs %}
+        <div class="card" style="width: 40%; padding: auto; margin: auto">
+            <img src="{{url_for('static', filename='img/songthumbnail.jpg')}}" class="card-img-top" alt="...">
+        
+            <button class="btn btn-light disabled btn-sm">{{ song.name }}</button>
+            
+           
+            <!-- /removeFromAlbum?song_id=1&album_id=42 -->
+            <!-- /removeFromAlbum/1/29 -->
+
+            <div class="card-body" style="padding: 1px">
+                <a href="{{url_for('remove_from_album', song_id=song.id, album_id=album.id)}}"> 
+                <button class="btn btn-sm btn-danger">Remove From Album</button>
+                </a>
+        
+                {% if song.isBlacklisted %}
+                <button class="btn btn-danger disabled btn-sm">Breached</button>
+                {% endif %}
+                
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+</div>
+{% endfor %}

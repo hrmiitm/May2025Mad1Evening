@@ -1,0 +1,40 @@
+<div class="card-container" style="display: flex; flex-wrap: wrap;">  
+
+
+    {% for song in songs%}
+    <div class="card" style="width: 30%; padding: auto; margin: auto">
+        <img src="{{url_for('static', filename='img/songthumbnail.jpg')}}" class="card-img-top" alt="...">
+    
+        <button class="btn btn-light disabled btn-sm">{{ song.name }}</button>
+        
+        {{song.rating}} ☆
+        <a href="{{url_for('home', song_id=song.id)}}"><button class="btn btn-primary"  style="width: 100%;">Play</button></a>
+        
+       
+        
+        <div class="card-body" style="padding: 1px">
+            
+                <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  AddToPlaylist
+                </button>
+    
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    {% for playlist in playlists %}
+
+                        <li>
+                            <a class="dropdown-item" href="{{url_for('add_to_playlist', song_id=song.id, playlist_id=playlist.id)}}">
+                                {{playlist.name}}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            
+        </div>
+
+        <div>
+            {% include './HomePlaylistComponents/rating.html'   %}
+        </div>
+    </div>
+    <br>
+    {% endfor %}
+    </div>

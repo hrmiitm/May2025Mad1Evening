@@ -1,0 +1,14 @@
+{% for p in playlists %}
+    <h1>{{p.name}}</h1>
+    <br>
+
+    {% for s in p.songs %}
+        <hr>
+        {{s.name}}
+        <a href="{{url_for('remove_from_playlist', song_id=s.id, playlist_id=p.id)}}">
+            <button class="btn btn-sm btn-danger">Remove From Playlist</button>
+        </a>
+        <hr>
+    {% endfor %}
+
+{% endfor %}

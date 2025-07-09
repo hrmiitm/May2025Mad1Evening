@@ -1,0 +1,49 @@
+<div class="card-container" style="display: flex; flex-wrap: wrap;">  
+
+
+{% for song in songs%}
+<div class="card" style="width: 40%; padding: auto; margin: auto">
+    <img src="{{url_for('static', filename='img/songthumbnail.jpg')}}" class="card-img-top" alt="...">
+
+    <button class="btn btn-light disabled btn-sm">{{ song.name }}</button>
+
+    <a href="{{ url_for('songs', id=song.id) }}">
+        <button class="btn btn-sm btn-primary">Play</button>
+    </a>
+    
+   
+    
+    <div class="card-body" style="padding: 1px">
+        <a href="{{url_for('update_song', song_id=song.id)}}">
+            <button class="btn btn-warning btn-sm">Update</button>
+        </a>
+        
+
+        <a href="{{url_for('delete_song', song_id=song.id)}}" onclick="return confirm('Press Yes to Delete!!!')">
+            <button class="btn btn-warning btn-sm">Delete</button>
+        </a>
+        
+
+            <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              AddAlbum
+            </button>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                {% for album in albums %}
+                <li>
+                    <a class="dropdown-item" href="/add_to_album/{{song.id}}/{{album.id}}">
+                        {{album.name}}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+
+
+        {% if song.isBlacklisted %}
+            <button class="btn btn-danger disabled btn-sm">BreachedPolicy</button>
+        {% endif %}
+        
+    </div>
+</div>
+{% endfor %}
+</div>
