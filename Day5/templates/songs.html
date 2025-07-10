@@ -1,0 +1,34 @@
+{% extends './layouts/bootstrap.html' %}
+
+{% block title %} Songs {% endblock %}
+
+{% block body %}
+<div> {% include './BasicComponents/navbar.html' %} </div>
+{% include './BasicComponents/flash.html'   %}
+
+
+<div style="margin: 10px">
+  <div class="row">
+      <div class="col-2" >
+          <h4>UploadSongs</h4>
+          <div style="border: 1px black solid; height: 80dvh; padding: 10px; overflow-y: auto">
+            {% include './SongsComponents/upload_song.html' %}
+          </div>
+            
+      </div>
+
+      <div class="col-6" >
+          <h4>My Songs</h4>
+          <div style="border: 1px black solid; height: 80dvh; padding: 10px; overflow-y: auto">
+            {% include './SongsComponents/show_all_songs.html' %}
+          </div>
+      </div>
+      <div class="col-4" >
+        <h4>Playing Song</h4>
+        <div style="border: 1px black solid; height: 80dvh; padding: 10px; overflow-y: auto">
+          {% include './SongsComponents/playing_song.html' %}
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

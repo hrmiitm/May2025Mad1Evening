@@ -1,0 +1,34 @@
+{% extends './layouts/bootstrap.html' %}
+
+{% block title %}
+    <title>Home</title>
+{% endblock %}
+
+{% block body %}
+<div> {% include './BasicComponents/navbar.html' %} </div>
+{% include './BasicComponents/flash.html'   %}
+
+
+<div style="margin: 10px">
+  <div class="row">
+
+      <div class="col-8" >
+          {% if search %} <h4>Search Result for: <strong> {{search}} </strong> </h4> {% else %} <h4>Songs</h4> {% endif %}
+          <div style="border: 1px black solid; height: 80dvh; padding: 10px; overflow-y: auto">
+            {% include './HomePlaylistComponents/show_home_songs.html'   %}
+          </div>
+          
+      </div>
+      <div class="col-4" >
+        <h4>Playing Song</h4>
+        <div style="border: 1px black solid; height: 80dvh; padding: 10px; overflow-y: auto">
+          {% include './SongsComponents/playing_song.html'   %}
+        </div>
+        
+    </div>
+
+
+  </div>
+</div>
+
+{% endblock %}

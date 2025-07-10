@@ -1,0 +1,25 @@
+<form action="{{ url_for('upload_album')}}" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="name" class="form-label">Album Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="">
+    </div>
+    <div class="mb-3">
+        <label for="genre" class="form-label">Genre</label>
+        <input type="text" class="form-control" id="genre" name="genre" placeholder="">
+    </div>
+    <div class="mb-3">
+        <label for="artist" class="form-label">Artist</label>
+        <input type="text" class="form-control" id="artist" name="artist" placeholder="">
+    </div>
+
+
+    <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Select All Songs</label>
+        <input class="form-control" type="file" id="formFileMultiple" name="files" multiple>
+    </div>
+      
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+      
+                  
+</form>

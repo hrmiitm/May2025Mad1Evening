@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+
+    {% if not curr_user %}
+        <a class="navbar-brand" href="#">MusicWorld</a>
+    {% else %}
+        <a class="navbar-brand" href="/profile">{{curr_user.email}}</a>
+    {% endif %}
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        {% if not curr_user %}
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/access">Login</a>
+            </li>
+        {% endif %}
+
+        {% if curr_user and not curr_user.isCreator %}
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/playlists">Playlist</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{url_for('logout')}}">Logout</a>
+            </li>
+        {% endif %}
+
+        {% if curr_user and curr_user.isCreator %}
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/playlists">Playlist</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/songs">Songs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/albums">Albums</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{url_for('logout')}}">Logout</a>
+            </li>
+        {% endif %}
+
+        </ul>
+
+
+        <form class="d-flex" role="search" action="/">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
+        
+    
+        
+
+
+      </div>
+    </div>
+  </nav>

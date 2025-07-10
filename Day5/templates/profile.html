@@ -1,0 +1,82 @@
+{% extends "./layouts/bootstrap.html" %}
+
+{% block body %}
+{% include "./BasicComponents/navbar.html" %}
+{% include "./BasicComponents/flash.html" %}
+<div class="container">
+    <div class="row">
+
+        <div class="col-4">
+                <h1>User Info</h1>
+                <div>
+                    <img src="{{url_for('static', filename='profilePics/'+curr_user.id|string+'.jpg')}}" style="width: 100%; margin-bottom: 1px">
+                </div>
+                <table class="table table-dark table-striped table-bordered">
+                    <tr>
+                        <td>Email</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>{{curr_user.email}}</td>
+                        {% if curr_user.isCreator %}
+                            <td>You are Creator</td>
+                        {% else %}
+                            <td>    
+                            <a href="{{ url_for('becomeCreator') }}">
+                                <button class="btn btn-info">Become Creator</button>
+                            </a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                </table>
+            </div>
+
+        <div class="col">
+            <h1>Update Form</h1>
+            <form action="/update_profile" method="POST" enctype="multipart/form-data">
+                New Email: <input type="text" name='email' required> <br>
+                Old Password: <input type="text" name='old_password' maxlength='5'><br>
+                New Password: <input type="text" name='password'><br>
+                Profile Pics: <input type="file" name='pic'><br>
+
+                <button type='submit'>Update Profile</button>
+            </form>
+        </div>
+
+
+        <div class="col">
+            <h1>Become Creator/CreatorStats</h1>
+
+            {% if not curr_user.isCreator %}
+                <a href="/becomeCreator">
+                    <button>Become Creator</button>
+                </a>
+                <a href="{{url_for('becomeCreator')}}">
+                    <button>Become Creator</button>
+                </a>
+
+            {% else %}
+                You Are Creator
+                <table border="1px">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    {% for k,v in creator_stats.items() %}
+                        <tr>
+                            <td>{{k}}</td>
+                            <td>{{v}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+        </div>
+
+
+
+    </div>
+
+</div>
+{% endblock body %}
+
+

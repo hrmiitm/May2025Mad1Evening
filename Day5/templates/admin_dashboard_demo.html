@@ -1,0 +1,89 @@
+{% extends './layouts/bootstrap.html' %}
+
+{% block body %}
+    <div class="container">
+    <div class="row">
+
+        <div class="col">
+            <h1>WS</h1>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for song in white_songs %}
+                    <tr>
+                        <th scope="row">{{song.id}}</th>
+                        <td>{{song.name}}</td>
+                        <td>
+                            <a href="{{url_for('admin_dashboard', song_id=song.id)}}"><button>Play</button></a>
+                        </td>
+                        <td>
+                            <a href=""><button>Delete</button></a>
+                        </td>
+                        <td>
+                            <a href="{{url_for('admin_blacklist_song', song_id=song.id)}}"><button>Blacklist</button></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    
+                   
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col">
+            <h1>BS</h1>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for song in black_songs %}
+                    <tr>
+                        <th scope="row">{{song.id}}</th>
+                        <td>{{song.name}}</td>
+                        <td>
+                            <a href="{{url_for('admin_dashboard', song_id=song.id)}}"><button>Play</button></a>
+                        </td>
+                        <td>
+                            <a href=""><button>Delete</button></a>
+                        </td>
+                        <td>
+                            <a href="{{url_for('admin_whitelist_song', song_id=song.id)}}"><button>Whitelist</button></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    
+                   
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col">
+            {{song.name}} {{song.id}}
+            <audio src="{{ url_for('static', filename='songs/' + song.id|string + '.mp3') }}" controls></audio>
+        </div>
+
+        <div class="col">
+            <img src="" alt="">
+        </div>
+
+    </div>
+
+    <div class="row"></div>
+
+</div>
+{% endblock %}

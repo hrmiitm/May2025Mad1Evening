@@ -1,0 +1,35 @@
+
+{% if curr_user.isBlacklisted %}
+    <button class="btn btn-danger">You are Blacklist </button>
+{% else %}
+    <form action="/upload_song" method="POST" enctype="multipart/form-data">
+
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Song Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="">
+        </div>
+        <div class="mb-3">
+            <label for="lyrics" class="form-label">Song Lyrics</label>
+            <input type="text-area" class="form-control" id="lyrics" name="lyrics" placeholder="">
+        </div>
+        <div class="mb-3">
+            <label for="duration" class="form-label">Song Duration</label>
+            <input type="text" class="form-control" id="duration" name="duration" placeholder="125 sec">
+        </div>
+        <div class="mb-3">
+            <label for="dateCreted" class="form-label">Date Created</label>
+            <input type="text" class="form-control" id="dateCreted" name="date" placeholder="31/12/2022">
+        </div>
+
+
+
+        
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Song File</label>
+            <input class="form-control" type="file" id="formFile" name="file">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>      
+    </form>
+{% endif %}
