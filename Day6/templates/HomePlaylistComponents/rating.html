@@ -1,0 +1,32 @@
+<!-- <form action="/rating?song_id={{song.id}}" method="POST"> -->
+
+    <!-- Backend
+        user.id ==> loginUser
+        song.id  ==> form
+        raring   ==>> form
+        -->
+
+        <!-- action, method, button type submin
+         type = "radio" for all
+         name = "rating" for all
+         value =1, value2, ...... -->
+
+<form action="{{ url_for('rating', song_id=song.id) }}" method="POST">
+    
+    <input type="radio" id="star1" name="rating" value="1" />
+    <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+
+    <input type="radio" id="star2" name="rating" value="2" />
+    <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+
+    <input type="radio" id="star3" name="rating" value="3" />
+    <label class = "full" for="star3" title="Meh - 3 stars"></label>
+
+    <input type="radio" id="star4" name="rating" value="4" />
+    <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+
+    <input type="radio" id="star5" name="rating" value="5" />
+    <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+
+    <button type = "submit" class="btn btn-sm btn-light">Rate it</button>
+</form>

@@ -1,0 +1,35 @@
+<table class="table table-dark table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Creator</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for song in black_songs %}
+            <tr>
+                <td>{{song.name}}</td>
+                <td>{{song.user_id}}</td>
+                <td>
+                    <a href="{{url_for('admin_dashboard', song_id=song.id)}}">
+                        <button class="btn btn-sm btn-primary">Play</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{url_for('admin_delete_song', song_id=song.id)}}">
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{url_for('admin_whitelist_song', song_id=song.id)}}">
+                        <button class="btn btn-sm btn-warning">Whitelist</button>
+                    </a>
+                </td>
+
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

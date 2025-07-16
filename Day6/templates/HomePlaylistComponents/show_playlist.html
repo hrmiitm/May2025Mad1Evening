@@ -1,0 +1,37 @@
+
+
+{% for playlist in playlists %}
+<div>  
+    <h3 style="display: inline-block;">{{ playlist.name }}</h3>
+    
+    <a href="{{url_for('delete_playlist', id=playlist.id)}}" onclick="return confirm('Are you sure you want to delete this playlist?')">
+        <button class="btn btn-sm btn-warning" style="display: inline-block; margin-left: 10px;">Delete</button>
+    </a>
+    
+    <hr>
+    <div class="card-container" style="display: flex; flex-wrap: wrap;">  
+
+
+        {% for song in playlist.songs %}
+        <div class="card" style="width: 30%;  padding: auto; margin: auto">
+            <img src="{{url_for('static', filename='img/songthumbnail.jpg')}}" class="card-img-top" alt="...">
+        
+            <button class="btn btn-light disabled btn-sm" >{{ song.name }}</button>
+        
+            <a href="{{url_for('playlists', song_id=song.id)}}">
+                <button class="btn btn-primary"  style="width: 100%;">Play
+                </button>
+            </a>
+            
+           
+            
+            <div class="card-body" style="padding: 1px">
+                <a href="{{url_for('remove_from_playlist', song_id=song.id, playlist_id=playlist.id)}}">
+                <button class="btn btn-sm btn-danger"  style="width: 100%;">Remove From Playlist</button>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+</div>
+{% endfor %}

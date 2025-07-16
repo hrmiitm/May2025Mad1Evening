@@ -1,0 +1,18 @@
+<div class="card">
+    <h4 class="card-title" style="text-align: center;">{{song.name}}</h4>
+    <img src="{{url_for('static', filename='img/songthumbnail.jpg')}}" class="card-img-top" alt="...">
+
+    <audio src="{{ url_for('static', filename='songs/' + song.id|string + '.mp3') }}" class="card-img-top" controls></audio>
+
+    <div class="card-body">
+      
+    <ul class="list-group list-group-flush">
+      Lyrics:
+      <li class="list-group-item">{{song.lyrics}}</li>
+      Duriation:
+      <li class="list-group-item">{{song.duration}}</li>
+      Date:
+      <li class="list-group-item">{{song.date}}</li>
+    </ul>
+
+</div>  

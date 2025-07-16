@@ -1,0 +1,61 @@
+{% extends './layouts/bootstrap.html' %}
+
+{% block title %}
+    <title>My Dashboard</title>
+{% endblock %}
+
+{% block body %}
+  <div> {% include './AdminComponents/navbar.html' %} </div>
+  <div> {% include './BasicComponents/flash.html'   %} </div>
+
+
+  <div style="margin: 10px">
+
+    <div class="row">
+        <div class="col">
+            <h4>Graphs</h4>
+            <div style="border: 1px solid black; height: 80dvh; padding: 10px; overflow-y: auto">
+                {% include './AdminComponents/show_graphs.html'   %}
+              </div>
+        </div>
+        <div class="col-4">
+            <h4>Playing Songs</h4>
+            <div style="border: 1px solid black; height: 80dvh; padding: 10px; overflow-y: auto">
+                {% include './SongsComponents/playing_song.html'   %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h4>White Songs</h4>
+            <div style="border: 1px solid black; height: 80dvh; padding: 10px; overflow-y: auto">
+              {% include './AdminComponents/white_songs.html'   %}
+            </div>
+        </div>
+        <div class="col">
+            <h4>Black Songs</h4>
+            <div style="border: 1px solid black; height: 80dvh; padding: 10px; overflow-y: auto">
+              {% include './AdminComponents/black_songs.html'   %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h4>White Creators</h4>
+            <div style="border: 1px solid black; height: 80dvh; padding: 10px; overflow-y: auto">
+              {% include './AdminComponents/white_creators.html'   %}
+            </div>
+        </div>
+        <div class="col">
+            <h4>Black Creators</h4>
+            <div style="border: 1px solid black; height: 80dvh; padding: 10px; overflow-y: auto">
+              {% include './AdminComponents/black_creators.html'   %}
+            </div>
+        </div>
+    </div>
+    
+  </div>
+
+{% endblock %}

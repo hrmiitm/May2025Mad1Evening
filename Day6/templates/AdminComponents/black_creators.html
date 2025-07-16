@@ -1,0 +1,23 @@
+<table class="table table-striped table-dark table-hover">
+    <thead>
+        <tr>
+            <th>Creator Id</th>
+            <th>Creator Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for creator in black_creators %}
+            <tr>
+                <td>{{creator.id}}</td>
+                <td>{{creator.email}}</td>
+                <td>
+
+                    <a href="/admin/whitelistCreator?creator_id={{creator.id}}">
+                        <button class="btn btn-sm btn-success">Whitelist</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
